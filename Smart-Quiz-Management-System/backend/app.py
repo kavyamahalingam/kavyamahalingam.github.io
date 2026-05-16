@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 from flask import Flask
 from extensions import bcrypt, jwt, limiter, cors, mail, socketio
 from routes import auth_bp
