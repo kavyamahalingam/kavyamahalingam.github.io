@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../assets/statics/home.css">
-    <link rel="stylesheet" href="../assets/statics/everything.css">
+    <link rel="stylesheet" href="assets/statics/home.css">
+    <link rel="stylesheet" href="assets/statics/everything.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <title>Everything - Organic Store</title>
+    <title>Groceries - Organic Store</title>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="../assets/images/logo.svg" alt="Logo">
+            <img src="assets/images/logo.svg" alt="Logo">
         </div>
         <nav id="navbar">
             <ul>
-                <li><a href="../pages/home.html">Home</a></li>
-                <li><a href="../pages/everything.html" class="active">Everything</a></li>
-                <li><a href="../pages/grocery.html">Grocery</a></li>
-                <li><a href="../pages/juice.html">Juice</a></li>
-                <li><a href="../pages/contact.html">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="everything.html">Everything</a></li>
+                <li><a href="grocery.html" class="active">Grocery</a></li>
+                <li><a href="juice.html">Juice</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
         <div class="header-right">
@@ -44,7 +44,7 @@
             <div class="filter-section">
                 <h3>Search Products</h3>
                 <div class="search-box">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" placeholder="Search groceries...">
                     <button><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
@@ -63,50 +63,28 @@
             <div class="filter-section categories">
                 <h3>Categories</h3>
                 <ul>
-                    <li><span>Groceries</span> (10)</li>
+                    <li class="active"><span>Groceries</span> (10)</li>
                     <li><span>Juice</span> (5)</li>
                 </ul>
-            </div>
-
-            <div class="filter-section best-sellers">
-                <h3>Our Best Sellers</h3>
-                <div class="mini-product">
-                    <img src="../assets/images/organic_bananas.png" alt="Mini Bananas">
-                    <div class="mini-info">
-                        <h4>Organic Bananas</h4>
-                        <div class="stars">★★★★★</div>
-                        <p>₹40.00</p>
-                    </div>
-                </div>
-                <div class="mini-product">
-                    <img src="../assets/images/fresh_strawberries.png" alt="Mini Strawberries">
-                    <div class="mini-info">
-                        <h4>Fresh Strawberries</h4>
-                        <div class="stars">★★★★★</div>
-                        <p>₹120.00</p>
-                    </div>
-                </div>
             </div>
         </aside>
 
         <!-- Product Grid -->
         <section class="product-grid-container">
             <div class="grid-header">
-                <p>Showing all 6 results</p>
+                <p>Showing all grocery results</p>
                 <select class="sort-select">
                     <option>Default sorting</option>
                     <option>Sort by popularity</option>
-                    <option>Sort by average rating</option>
                     <option>Sort by latest</option>
                     <option>Sort by price: low to high</option>
-                    <option>Sort by price: high to low</option>
                 </select>
             </div>
             <div class="product-grid" id="product-grid">
                 <!-- Product Card 1 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/organic_bananas.png" alt="Organic Bananas">
+                        <img src="assets/images/organic_bananas.png" alt="Organic Bananas">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
@@ -119,7 +97,7 @@
                 <!-- Product Card 2 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/fresh_strawberries.png" alt="Fresh Strawberries">
+                        <img src="assets/images/fresh_strawberries.png" alt="Fresh Strawberries">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
@@ -132,7 +110,7 @@
                 <!-- Product Card 3 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/organic_tomatoes.png" alt="Organic Tomatoes">
+                        <img src="assets/images/organic_tomatoes.png" alt="Organic Tomatoes">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
@@ -145,20 +123,20 @@
                 <!-- Product Card 4 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/natural_honey.png" alt="Natural Honey">
+                        <img src="assets/images/organic_spinach.png" alt="Organic Spinach">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
-                        <h4>Natural Honey</h4>
+                        <h4>Organic Spinach</h4>
                         <div class="stars">★★★★★</div>
-                        <p class="price">₹250.00</p>
-                        <button class="add-btn" onclick="addToCart('Natural Honey', 250.00)"><i class="fa-solid fa-shopping-basket"></i></button>
+                        <p class="price">₹30.00</p>
+                        <button class="add-btn" onclick="addToCart('Organic Spinach', 30.00)"><i class="fa-solid fa-shopping-basket"></i></button>
                     </div>
                 </div>
                 <!-- Product Card 5 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/fresh_milk.png" alt="Fresh Organic Milk">
+                        <img src="assets/images/fresh_milk.png" alt="Fresh Organic Milk">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
@@ -171,7 +149,7 @@
                 <!-- Product Card 6 -->
                 <div class="product-card">
                     <div class="img-container">
-                        <img src="../assets/images/organic_eggs.png" alt="Organic Eggs">
+                        <img src="assets/images/organic_eggs.png" alt="Organic Eggs">
                     </div>
                     <div class="product-info">
                         <p class="category">Groceries</p>
@@ -189,7 +167,7 @@
         <p>&copy; 2026 Organic Store. All rights reserved.</p>
     </footer>
 
-    <script src="../script/scripts.js"></script>
+    <script src="script/scripts.js"></script>
 </body>
 
 </html>
