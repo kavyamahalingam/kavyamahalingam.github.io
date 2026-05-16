@@ -3,59 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kavya Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-    font-family: Arial, sans-serif;
+*{
     margin:0;
     padding:0;
-    background:#f4f4f4;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f3f6fb;
     color:#333;
+    line-height:1.7;
 }
 
 .container{
-    width:80%;
-    margin:30px auto;
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
-h1{
-    color:#222;
-    margin-bottom:5px;
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+    padding:50px 40px;
+    text-align:center;
 }
 
-h2{
-    color:#444;
-    border-bottom:2px solid #ddd;
-    padding-bottom:5px;
-    margin-top:30px;
+.header h1{
+    font-size:42px;
+    margin-bottom:10px;
+    letter-spacing:1px;
 }
 
-p{
-    line-height:1.6;
-}
-
-ul{
-    line-height:1.8;
+.header p{
+    font-size:18px;
+    opacity:0.9;
 }
 
 .contact{
-    margin-bottom:20px;
+    margin-top:20px;
+    font-size:15px;
 }
 
-.skills{
-    background:#f9f9f9;
-    padding:15px;
-    border-radius:8px;
+/* CONTENT */
+
+.content{
+    padding:40px;
 }
 
-.project{
+section{
+    margin-bottom:40px;
+}
+
+h2{
+    font-size:24px;
+    color:#1e3c72;
     margin-bottom:20px;
+    position:relative;
+}
+
+h2::after{
+    content:'';
+    width:60px;
+    height:3px;
+    background:#2a5298;
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    border-radius:10px;
+}
+
+.card{
+    background:#f9fbff;
+    padding:25px;
+    border-radius:12px;
+    margin-top:20px;
+    border-left:5px solid #2a5298;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+h3{
+    color:#222;
+    margin-bottom:10px;
+}
+
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:10px;
+}
+
+/* SKILLS */
+
+.skills-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill{
+    background:#2a5298;
+    color:white;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.skill:hover{
+    background:#1e3c72;
+    transform:scale(1.05);
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    background:#eef3fb;
+    color:#555;
+    font-size:14px;
+}
+
+@media(max-width:768px){
+
+.header h1{
+    font-size:32px;
+}
+
+.content{
+    padding:25px;
+}
+
 }
 
 </style>
@@ -66,97 +166,171 @@ ul{
 
 <div class="container">
 
-    <h1>KAVYA M</h1>
+    <div class="header">
 
-    <div class="contact">
-        <p>
-            1/35, Kulathupalayam Pudur, Kinathukadavu, Coimbatore <br>
-            📞 +91 8438456440 <br>
+        <h1>KAVYA M</h1>
+
+        <p>Full Stack Developer | Frontend Developer</p>
+
+        <div class="contact">
+            📍 Coimbatore | 📞 +91 8438456440 <br>
             📧 kavyamahalaxmi2006@gmail.com
-        </p>
-    </div>
-
-    <h2>Summary</h2>
-
-    <p>
-        Aspiring Full Stack Developer with hands-on internship experience in developing responsive web applications using HTML, CSS, JavaScript, React.js, Python (Flask/Django), FastAPI, and MySQL. Skilled in frontend and backend development, REST API integration, database management, and problem-solving with a strong focus on user-friendly and scalable applications.
-    </p>
-
-    <h2>Work Experience</h2>
-
-    <h3>Full Stack Developer (Intern)</h3>
-
-    <p><strong>CodeSence Soft Solutions Pvt Ltd</strong> | Nov 2025 – Present</p>
-
-    <ul>
-        <li>Developed responsive and interactive web applications using HTML, CSS, and JavaScript.</li>
-        <li>Implemented backend logic using Python (Django/Flask).</li>
-        <li>Integrated MySQL database for data management.</li>
-        <li>Performed testing and debugging to improve application performance.</li>
-        <li>Worked with teams to complete project requirements on time.</li>
-    </ul>
-
-    <h2>Education</h2>
-
-    <h3>Bachelor of Computer Science With Data Analytics</h3>
-
-    <p>
-        Shri Nehru Maha Vidhyalaya College Of Arts And Science <br>
-        Jul 2023 – Present <br>
-        GPA : 8.0/10
-    </p>
-
-    <h3>Higher Secondary</h3>
-
-    <p>
-        Government Hr. Sec. School <br>
-        Jun 2022 – Apr 2023 <br>
-        GPA : 7.07/10
-    </p>
-
-    <h2>Projects</h2>
-
-    <div class="project">
-
-        <h3>Smart Quiz & Assessment Management System</h3>
-
-        <p>
-            Developed a full-stack Quiz & Assessment Management System using React.js, Flask, FastAPI, and MySQL with authentication, role-based access, dynamic exams, and REST API integration.
-        </p>
+        </div>
 
     </div>
 
-    <div class="project">
+    <div class="content">
 
-        <h3>E-Commerce Website</h3>
+        <section>
 
-        <p>
-            Developed a responsive E-Commerce website using HTML, CSS, and JavaScript with shopping cart functionality and interactive user interface components.
-        </p>
+            <h2>Summary</h2>
+
+            <div class="card">
+
+                <p>
+                    Aspiring Full Stack Developer with hands-on internship experience in developing responsive web applications using HTML, CSS, JavaScript, React.js, Python (Flask/Django), FastAPI, and MySQL. Skilled in frontend and backend development, REST API integration, and scalable application development.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Work Experience</h2>
+
+            <div class="card">
+
+                <h3>Full Stack Developer Intern</h3>
+
+                <p><strong>CodeSence Soft Solutions Pvt Ltd</strong> | Nov 2025 – Present</p>
+
+                <ul>
+                    <li>Developed responsive web applications using HTML, CSS, and JavaScript.</li>
+                    <li>Implemented backend logic using Python Flask and Django.</li>
+                    <li>Integrated MySQL database for data management.</li>
+                    <li>Performed testing and debugging to improve performance.</li>
+                    <li>Collaborated with team members to deliver projects on time.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Education</h2>
+
+            <div class="card">
+
+                <h3>Bachelor of Computer Science With Data Analytics</h3>
+
+                <p>
+                    Shri Nehru Maha Vidhyalaya College Of Arts And Science <br>
+                    Jul 2023 – Present <br>
+                    GPA : 8.0/10
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Higher Secondary</h3>
+
+                <p>
+                    Government Hr. Sec. School <br>
+                    GPA : 7.07/10
+                </p>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Projects</h2>
+
+            <div class="card">
+
+                <h3>Smart Quiz & Assessment Management System</h3>
+
+                <p>
+                    Developed a full-stack Quiz & Assessment Management System using React.js, Flask, FastAPI, and MySQL with authentication, dynamic exams, and REST API integration.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>E-Commerce Website</h3>
+
+                <p>
+                    Developed a responsive E-Commerce web application using HTML, CSS, and JavaScript featuring shopping cart functionality and interactive UI design.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Certifications</h2>
+
+            <div class="card">
+
+                <ul>
+                    <li>Full Stack Web Development – Live Wire</li>
+                    <li>Full Stack Web Development – Novi Tech R & D Pvt Ltd</li>
+                    <li>Data Analytics – Accent Tech Know Soft</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Technologies</h2>
+
+            <div class="skills-container">
+
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React.js</div>
+                <div class="skill">Python</div>
+                <div class="skill">Flask</div>
+                <div class="skill">Django</div>
+                <div class="skill">FastAPI</div>
+                <div class="skill">MySQL</div>
+                <div class="skill">SQLite</div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Tools</h2>
+
+            <div class="skills-container">
+
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
+                <div class="skill">VS Code</div>
+                <div class="skill">Postman</div>
+                <div class="skill">ChatGPT</div>
+                <div class="skill">Claude</div>
+
+            </div>
+
+        </section>
 
     </div>
 
-    <h2>Certifications</h2>
+    <div class="footer">
 
-    <ul>
-        <li>Full Stack Web Development (Live Wire)</li>
-        <li>Full Stack Web Development (Novi Tech R & D Pvt Ltd)</li>
-        <li>Data Analytics (Accent Tech Know Soft)</li>
-    </ul>
-
-    <h2>Technologies</h2>
-
-    <div class="skills">
-
-        HTML5, CSS3, JavaScript, React.js, Python (Flask, Django, FastAPI), MySQL, SQLite
-
-    </div>
-
-    <h2>Tools</h2>
-
-    <div class="skills">
-
-        Git, GitHub, VS Code, Postman, ChatGPT, Claude
+        © 2026 Kavya M | Portfolio Website
 
     </div>
 
