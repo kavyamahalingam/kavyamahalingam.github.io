@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/statics/home.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>frontend</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../assets/images/logo.svg" alt="Logo">
+        </div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="../pages/home.html">Home</a></li>
+                <li><a href="../pages/everything.html">Everything</a></li>
+                <li><a href="../pages/grocery.html">Grocery</a></li>
+                <li><a href="../pages/juice.html">Juice</a></li>
+                <li><a href="../pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <div class="icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-cart-shopping" id="cart-icon"></i>
+                <span id="cart-count">0</span>
+            </div>
+            <button class="add_to_cart">Add to Cart</button>
+            <div class="hamburger" id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Slider Container -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="../assets/images/banner_slides.png" alt="Slide 1">
+                </div>
+                <div class="slide-content">
+                    <h3>Best Quality Products</h3>
+                    <h2>Join The Organic <br>
+                        Movement!</h2>
+                    <p>Choose fresh, natural, and chemical-free products for a healthier lifestyle. Join us in promoting
+                        organic living every day.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-image">
+                    <img src="../assets/images/banner_slides_2.png" alt="Slide 2">
+                </div>
+                <div class="slide-content">
+                    <h3>Best Quality Products</h3>
+                    <h2>Join The Organic <br>
+                        Movement!</h2>
+                    <p>Choose fresh, natural, and chemical-free products for a healthier lifestyle. Join us in promoting
+                        organic living every day.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <!-- Category Banners -->
+    <section class="category-banners">
+        <div class="banner-card fruits">
+            <div class="banner-info">
+                <h3>Farm Fresh Fruits</h3>
+                <p>Organic and delicious</p>
+                <a href="../pages/grocery.html" class="shop-btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="banner-card veggies">
+            <div class="banner-info">
+                <h3>Fresh Vegetables</h3>
+                <p>Straight from the farm</p>
+                <a href="../pages/grocery.html" class="shop-btn">Shop Now</a>
+            </div>
+        </div>
+        <div class="banner-card juices">
+            <div class="banner-info">
+                <h3>Refreshing Juices</h3>
+                <p>100% natural extract</p>
+                <a href="../pages/juice.html" class="shop-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="../assets/images/organic_tomatoes.png" alt="Assorted Groceries">
+                    <div class="product-badge">Sale!</div>
+                </div>
+                <div class="product-info">
+                    <p class="category">Grocery</p>
+                    <h4>Organic Tomatoes</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="price"><span class="old-price">₹100</span> ₹60</p>
+                    <button class="add-btn" onclick="addToCart('Organic Tomatoes', 60.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="../assets/images/organic_bananas.png" alt="Fresh Bananas">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-info">
+                    <p class="category">Fruits</p>
+                    <h4>Fresh Bananas</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="price">₹40</p>
+                    <button class="add-btn" onclick="addToCart('Organic Bananas', 40.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="../assets/images/fresh_orange_juice.png" alt="Natural Juice">
+                </div>
+                <div class="product-info">
+                    <p class="category">Juice</p>
+                    <h4>Natural Orange Juice</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="price">₹150</p>
+                    <button class="add-btn" onclick="addToCart('Fresh Orange Juice', 150.00)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="../assets/images/organic_red_chili.png" alt="Red Chili">
+                </div>
+                <div class="product-info">
+                    <p class="category">Vegetables</p>
+                    <h4>Organic Red Chili</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="price">₹80</p>
+                    <button class="add-btn" onclick="addToCart('Organic Red Chili', 80.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <section class="special-offer">
+        <div class="offer-content">
+            <h3>Limited Time Offer</h3>
+            <h2>Get 25% Off On All First Orders!</h2>
+            <p>Join the organic movement and experience the freshness of nature delivered to your doorstep.</p>
+            <a href="../pages/everything.html" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-certificate"></i>
+                <h4>Certified Organic</h4>
+                <p>All our products are certified by top organic standards organizations.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <h4>Natural Processes</h4>
+                <p>We use traditional and natural methods to preserve nutrients and taste.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-truck"></i>
+                <h4>Fast Delivery</h4>
+                <p>Get your organic produce delivered fresh within 24 hours of harvest.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-wallet"></i>
+                <h4>Best Prices</h4>
+                <p>Premium quality organic products at the most affordable prices.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../script/scripts.js"></script>
+    <footer class="main-footer">
+        <div class="footer-features">
+            <div class="feature-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div class="feature-text">
+                    <h3>Free Shipping</h3>
+                    <p>On all orders over $50</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-leaf"></i>
+                <div class="feature-text">
+                    <h3>Certified Organic</h3>
+                    <p>100% Guarantee</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <div class="feature-text">
+                    <h3>Huge Savings</h3>
+                    <p>At Lowest Price</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-main">
+            <div class="footer-column about-col">
+                <div class="logo">
+                    <img src="../assets/images/logo.svg" alt="Logo">
+                </div>
+                <p>Welcome to our organic store! We provide fresh, natural, and chemical-free products for a healthier
+                    lifestyle. Join the movement today.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../pages/home.html">Home</a></li>
+                    <li><a href="../pages/everything.html">Everything</a></li>
+                    <li><a href="../pages/contact.html">Contact Us</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">My Account</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Shop Categories</h4>
+                <ul>
+                    <li><a href="../pages/grocery.html">Grocery</a></li>
+                    <li><a href="../pages/juice.html">Juice</a></li>
+                    <li><a href="#">Fresh Fruits</a></li>
+                    <li><a href="#">Vegetables</a></li>
+                    <li><a href="#">Dairy Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-col">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter for updates and special offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="contact-info">
+                    <p><i class="fa-solid fa-location-dot"></i> 123 Organic St, Nature City</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 234 567 890</p>
+                    <p><i class="fa-solid fa-envelope"></i> contact@organic.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Organic Store. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-paypal"></i>
+                <i class="fa-brands fa-cc-apple-pay"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
