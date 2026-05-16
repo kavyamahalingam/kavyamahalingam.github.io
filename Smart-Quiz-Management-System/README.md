@@ -1,13 +1,21 @@
 # Smart Quiz & Assessment Management System
 
-A production-ready, full-stack enterprise-grade platform designed for educational institutions to manage online examinations with high security, real-time feedback, and automated grading.
+A professional, real-time full-stack enterprise-grade platform designed for educational institutions to manage online examinations with live interactions, automated grading, and instant feedback.
+
+## 🚀 Live Demo
+**Experience the platform live:** [Smart Quiz Live Demo](https://smart-quiz-demo.vercel.app)
+
+> [!NOTE]
+> Use `student@example.com` / `password123` for quick student access or register a new account to experience the real-time OTP flow.
 
 ## 🌟 Key Highlights
 
+- **Real-Time Live Exams**: Fully synchronized exam sessions using **WebSockets (Socket.IO)** for live progress tracking and instant results.
+- **Dynamic Leaderboards**: Real-time broadcasting of scores and active user attendance during live assessment sessions.
 - **Three-Portal Architecture**: Dedicated interfaces for **Administrators**, **Staff**, and **Students**.
+- **Timer-Based Assessments**: Countdown timers with auto-submit functionality and secure time synchronization.
 - **Enterprise Security**: Robust protection against SQL Injection, XSS, and CSRF; JWT-based session management.
 - **Automated Workflows**: Real-time evaluation of quiz results and automated PDF certificate generation.
-- **AI Integration**: Capable of generating assessment questions dynamically (expandable feature).
 
 ## 🚀 How it Works Internally
 

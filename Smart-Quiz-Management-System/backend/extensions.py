@@ -4,11 +4,13 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_cors import CORS
 from flask_mail import Mail
+from flask_socketio import SocketIO
 
 bcrypt = Bcrypt()
 jwt = JWTManager()
 cors = CORS()
 mail = Mail()
+socketio = SocketIO()
 
 # Initialize limiter
 limiter = Limiter(

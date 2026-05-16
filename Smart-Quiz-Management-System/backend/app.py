@@ -1,5 +1,5 @@
 from flask import Flask
-from extensions import bcrypt, jwt, limiter, cors, mail
+from extensions import bcrypt, jwt, limiter, cors, mail, socketio
 from routes import auth_bp
 from profile_routes import profile_bp
 from portal_routes import portal_bp
@@ -55,6 +55,10 @@ def create_app():
     mail.init_app(app)
     cors.init_app(app, supports_credentials=True, origins=["http://localhost:5173"])
     limiter.init_app(app)
+    socketio.init_app(app, cors_allowed_origins="*") # For dev, allow all
+
+    # Import socket events after socketio is initialized to avoid circular imports
+    import socket_events
 
     # JWT Claims Configuration
     @jwt.additional_claims_loader
@@ -68,11 +72,11 @@ def create_app():
     # Security Headers
     csp = {
         'default-src': "'self'",
-        'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"], # unsafe-inline/eval often needed for dev/some react libs
+        'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
         'style-src': ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
         'font-src': ["'self'", "https://fonts.gstatic.com"],
         'img-src': ["'self'", "data:"],
-        'connect-src': ["'self'", "http://localhost:5000"]
+        'connect-src': ["'self'", "http://localhost:5000", "ws://localhost:5000"]
     }
     Talisman(app, 
              content_security_policy=csp, 
@@ -90,4 +94,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(port=5000, debug=True)
+    socketio.run(app, port=5000, debug=True)

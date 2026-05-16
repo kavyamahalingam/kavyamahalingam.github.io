@@ -280,6 +280,7 @@ const App = () => {
                 examId={examId}
                 setView={setView} 
                 setUserExamId={setUserExamId}
+                user={user}
               />
             </motion.div>
           ) : (
