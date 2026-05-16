@@ -53,11 +53,18 @@ def create_app():
     bcrypt.init_app(app)
     jwt.init_app(app)
     mail.init_app(app)
-    cors.init_app(app, supports_credentials=True, origins=["http://localhost:5173"])
+    
+    # Allow local and production Vercel origins
+    allowed_origins = [
+        "http://localhost:5173",
+        "https://kavyamahalingam-github-io-rwam-sw3jethfw.vercel.app",
+        "https://kavyamahalingam.github.io"
+    ]
+    cors.init_app(app, supports_credentials=True, origins=allowed_origins)
     limiter.init_app(app)
-    socketio.init_app(app, cors_allowed_origins="*") # For dev, allow all
+    socketio.init_app(app, cors_allowed_origins="*")
 
-    # Import socket events after socketio is initialized to avoid circular imports
+    # Import socket events after socketio is initialized
     import socket_events
 
     # JWT Claims Configuration
@@ -76,13 +83,13 @@ def create_app():
         'style-src': ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
         'font-src': ["'self'", "https://fonts.gstatic.com"],
         'img-src': ["'self'", "data:"],
-        'connect-src': ["'self'", "http://localhost:5000", "ws://localhost:5000"]
+        'connect-src': ["'self'", "*", "ws:*", "wss:*"] # Allow production connections
     }
     Talisman(app, 
              content_security_policy=csp, 
-             force_https=False, 
+             force_https=True if os.getenv('FLASK_ENV') == 'production' else False,
              strict_transport_security=True,
-             session_cookie_secure=False,
+             session_cookie_secure=True if os.getenv('FLASK_ENV') == 'production' else False,
              session_cookie_http_only=True)
 
     # Blueprints
@@ -92,6 +99,8 @@ def create_app():
 
     return app
 
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
-    socketio.run(app, port=5000, debug=True)
+    port = int(os.getenv('PORT', 5000))
+    socketio.run(app, host='0.0.0.0', port=port, debug=False)

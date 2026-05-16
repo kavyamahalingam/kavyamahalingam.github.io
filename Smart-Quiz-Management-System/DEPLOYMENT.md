@@ -2,7 +2,7 @@
 
 This guide explains how to deploy the Smart Quiz project to live platforms like **Render** (Backend) and **Vercel** (Frontend).
 
-## 1. Backend Deployment (Render.com)
+## 1. Backend Deployment (Render.com / Railway.app)
 
 The backend is configured to run on Render using the provided `render.yaml`.
 
@@ -10,38 +10,28 @@ The backend is configured to run on Render using the provided `render.yaml`.
 1.  **Push to GitHub**: Ensure your code is on GitHub.
 2.  **Create a New Web Service**: Select the `backend` folder as the root.
 3.  **Environment Variables**:
-    - `DB_HOST`: Your live MySQL host (e.g., from Aiven or Railway).
+    - `FLASK_ENV`: `production`
+    - `DB_HOST`: Your live MySQL host.
     - `DB_USER`: Database username.
     - `DB_PASSWORD`: Database password.
     - `DB_NAME`: Database name.
     - `SECRET_KEY`: A long random string.
     - `JWT_SECRET_KEY`: Another random string.
-    - `MAIL_USERNAME`: Your Gmail address for OTPs.
+    - `MAIL_USERNAME`: Your Gmail address.
     - `MAIL_PASSWORD`: Your Gmail App Password.
-4.  **Start Command**: `gunicorn --worker-class eventlet -w 1 app:app` (already set in `render.yaml`).
+4.  **Start Command**: `gunicorn --worker-class eventlet -w 1 app:app`
 
-## 2. Database Setup
-
-Since this project requires MySQL:
-1.  **Use a Managed Database**: I recommend **Railway.app** or **Aiven.io** for a free/low-cost MySQL instance.
-2.  **Initialize Schema**: Run the `mysql_schema.sql` script against your live database using a tool like MySQL Workbench or the platform's SQL console.
-
-## 3. Frontend Deployment (Vercel)
+## 2. Frontend Deployment (Vercel)
 
 The frontend is a Vite + React application.
 
 ### Steps:
 1.  **Import to Vercel**: Connect your GitHub repository.
-2.  **Root Directory**: Set to `frontend`.
+2.  **Root Directory**: **IMPORTANT**: Set this to `Smart-Quiz-Management-System/frontend`.
 3.  **Environment Variables**:
-    - `VITE_API_URL`: The URL of your deployed Render backend (e.g., `https://smart-quiz-backend.onrender.com`).
-4.  **Configuration**: The `vercel.json` file in the `frontend` folder automatically handles API proxying for you.
+    - `VITE_API_URL`: (Optional) The URL of your deployed Render backend if not using proxy.
+4.  **Configuration**: The `vercel.json` file handles API proxying. **Make sure to update the destination URL in `vercel.json` to match your Render backend URL.**
 
-## 4. Finalizing the Live Demo
-
-Once deployed:
-1.  Copy your Vercel deployment URL.
-2.  Update the **Live Demo** buttons in the root `index.html` and `README.md` if your URL is different from `https://smart-quiz-demo.vercel.app`.
-
----
-*Note: This configuration ensures real-time WebSockets (Socket.IO) work correctly across different domains using CORS and proxying.*
+## 3. Database Setup
+1.  **Use a Managed Database**: I recommend **Railway.app** or **Aiven.io**.
+2.  **Initialize Schema**: Run `mysql_schema.sql` against your live database.

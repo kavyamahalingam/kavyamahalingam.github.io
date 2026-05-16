@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client';
 
-const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Use environment variable or current origin for proxying
+const SOCKET_URL = import.meta.env.VITE_API_URL || window.location.origin;
 
 class SocketService {
   constructor() {
