@@ -11,14 +11,14 @@ The backend is configured to run on Render using the provided `render.yaml`.
 2.  **Create a New Web Service**: Select the `backend` folder as the root.
 3.  **Environment Variables**:
     - `FLASK_ENV`: `production`
-    - `DB_HOST`: Your live MySQL host.
-    - `DB_USER`: Database username.
-    - `DB_PASSWORD`: Database password.
-    - `DB_NAME`: Database name.
-    - `SECRET_KEY`: A long random string.
-    - `JWT_SECRET_KEY`: Another random string.
-    - `MAIL_USERNAME`: Your Gmail address.
-    - `MAIL_PASSWORD`: Your Gmail App Password.
+    - `DB_HOST`: <localhost> (e.g., from Aiven or Railway)
+    - `DB_USER`: <root>
+    - `DB_PASSWORD`: <kavya@2006>
+    - `DB_NAME`: <auth_db>
+    - `SECRET_KEY`: <jwt-secret-key-12345-long-enough-to-be-secure-32-chars>
+    - `JWT_SECRET_KEY`: <jwt-secret-key-12345-long-enough-to-be-secure-32-chars
+    - `MAIL_USERNAME`: <kavyamahalaxmi2006@gmail.com>
+    - `MAIL_PASSWORD`: <epofzugyacrfqyjz>
 4.  **Start Command**: `gunicorn --worker-class eventlet -w 1 app:app`
 
 ## 2. Frontend Deployment (Vercel)

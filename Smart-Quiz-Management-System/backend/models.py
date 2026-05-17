@@ -15,8 +15,9 @@ try:
         pool_size=5,
         pool_reset_session=True,
         host=os.getenv('DB_HOST', 'localhost'),
+        port=int(os.getenv('DB_PORT', 3306)),
         user=os.getenv('DB_USER', 'root'),
-        password=os.getenv('DB_PASSWORD', ''),
+        password=os.getenv('DB_PASSWORD', 'kavya@2006'),
         database=os.getenv('DB_NAME', 'auth_db')
     )
     logger.info("Database connection pool initialized")
@@ -31,6 +32,7 @@ def get_db_connection():
         # Fallback if pool failed to initialize
         return mysql.connector.connect(
             host=os.getenv('DB_HOST', 'localhost'),
+            port=int(os.getenv('DB_PORT', 3306)),
             user=os.getenv('DB_USER', 'root'),
             password=os.getenv('DB_PASSWORD', 'kavya@2006'),
             database=os.getenv('DB_NAME', 'auth_db')

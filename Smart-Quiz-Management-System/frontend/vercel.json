@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://smart-quiz-backend.onrender.com/api/$1"
+      "destination": "https://kavyamahalingam-github-io-1.onrender.com/api/$1"
     },
     {
       "source": "/socket.io/(.*)",
-      "destination": "https://smart-quiz-backend.onrender.com/socket.io/$1"
+      "destination": "https://kavyamahalingam-github-io-1.onrender.com/socket.io/$1"
     },
     {
       "source": "/(.*)",
