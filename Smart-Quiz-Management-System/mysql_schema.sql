@@ -1,8 +1,6 @@
 -- Database Schema for Secure Authentication System
--- Target: MySQL
+-- Target: MySQL (Compatible with Railway & MySQL 8.x/9.x)
 
-CREATE DATABASE IF NOT EXISTS auth_db;
-USE auth_db;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,10 +51,12 @@ CREATE TABLE IF NOT EXISTS user_activities (
     page_url VARCHAR(255),
     ip_address VARCHAR(45),
     user_agent TEXT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     session_id VARCHAR(255),
+    is_read BOOLEAN DEFAULT FALSE,
+    category VARCHAR(50) DEFAULT 'General',
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    INDEX idx_user_timestamp (user_id, timestamp),
+    INDEX idx_user_timestamp (user_id, `timestamp`),
     INDEX idx_action_type (action_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
