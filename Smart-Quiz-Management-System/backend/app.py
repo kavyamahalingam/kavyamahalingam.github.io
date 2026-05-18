@@ -100,6 +100,13 @@ def create_app():
     app.register_blueprint(profile_bp, url_prefix='/api/profile')
     app.register_blueprint(portal_bp, url_prefix='/api/portal')
 
+    @app.route('/')
+    def home():
+        return {
+            "status": "Backend Running",
+            "database": "Connected"
+        }
+
     return app
 
 app = create_app()
