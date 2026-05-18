@@ -32,6 +32,11 @@ def create_app():
     
     app = Flask(__name__)
 
+    # Support reverse proxy headers (Render/Vercel routing) to correctly resolve client IPs
+    from werkzeug.middleware.proxy_fix import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+
+
     # Configuration
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-key-change-me')
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'jwt-key-change-me')
