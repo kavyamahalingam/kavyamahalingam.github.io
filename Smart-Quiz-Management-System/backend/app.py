@@ -58,12 +58,14 @@ def create_app():
     mail.init_app(app)
     
     # Allow local and production Vercel origins
+    import re
     allowed_origins = [
-        "http://localhost:5173",
-        "https://kavyamahalingam-github-io-rwam-sw3jethfw.vercel.app",
-        "https://kavyamahalingam.github.io"
+        re.compile(r"^http://localhost:\d+$"),
+        re.compile(r"^https://kavyamahalingam\.github\.io$"),
+        re.compile(r"^https://kavyamahalingam-github-io.*\.vercel\.app$")
     ]
     cors.init_app(app, supports_credentials=True, origins=allowed_origins)
+
     limiter.init_app(app)
     socketio.init_app(app, cors_allowed_origins="*")
 
