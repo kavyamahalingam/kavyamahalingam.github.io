@@ -7,11 +7,11 @@ load_dotenv()
 def apply_exam_schema():
     try:
         conn = mysql.connector.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
-            port=int(os.getenv('DB_PORT', 3306)),
-            user=os.getenv('DB_USER', 'root'),
-            password=os.getenv('DB_PASSWORD', 'kavya@2006'),
-            database=os.getenv('DB_NAME', 'auth_db')
+            host=os.getenv('MYSQLHOST', 'localhost'),
+            port=int(os.getenv('MYSQLPORT', 3306)),
+            user=os.getenv('MYSQLUSER', 'root'),
+            password=os.getenv('MYSQLPASSWORD', 'kavya@2006'),
+            database=os.getenv('MYSQLDATABASE', 'auth_db')
         )
         cursor = conn.cursor()
         

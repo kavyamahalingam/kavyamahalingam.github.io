@@ -13,13 +13,15 @@ services:
         fromContext: secret
       - key: JWT_SECRET_KEY
         fromContext: secret
-      - key: DB_HOST
+      - key: MYSQLHOST
         sync: false
-      - key: DB_USER
+      - key: MYSQLPORT
         sync: false
-      - key: DB_PASSWORD
+      - key: MYSQLUSER
         sync: false
-      - key: DB_NAME
+      - key: MYSQLPASSWORD
+        sync: false
+      - key: MYSQLDATABASE
         sync: false
       - key: MAIL_USERNAME
         sync: false

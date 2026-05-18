@@ -14,11 +14,11 @@ try:
         pool_name="auth_pool",
         pool_size=5,
         pool_reset_session=True,
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=int(os.getenv('DB_PORT', 3306)),
-        user=os.getenv('DB_USER', 'root'),
-        password=os.getenv('DB_PASSWORD', 'kavya@2006'),
-        database=os.getenv('DB_NAME', 'auth_db')
+        host=os.getenv('MYSQLHOST', 'localhost'),
+        port=int(os.getenv('MYSQLPORT', 3306)),
+        user=os.getenv('MYSQLUSER', 'root'),
+        password=os.getenv('MYSQLPASSWORD', 'kavya@2006'),
+        database=os.getenv('MYSQLDATABASE', 'auth_db')
     )
     logger.info("Database connection pool initialized")
 except Error as e:
@@ -31,12 +31,13 @@ def get_db_connection():
             return db_pool.get_connection()
         # Fallback if pool failed to initialize
         return mysql.connector.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
-            port=int(os.getenv('DB_PORT', 3306)),
-            user=os.getenv('DB_USER', 'root'),
-            password=os.getenv('DB_PASSWORD', 'kavya@2006'),
-            database=os.getenv('DB_NAME', 'auth_db')
+            host=os.getenv('MYSQLHOST', 'localhost'),
+            port=int(os.getenv('MYSQLPORT', 3306)),
+            user=os.getenv('MYSQLUSER', 'root'),
+            password=os.getenv('MYSQLPASSWORD', 'kavya@2006'),
+            database=os.getenv('MYSQLDATABASE', 'auth_db')
         )
+
     except Error as e:
         logger.error(f"DATABASE CONNECTION ERROR: {e}")
         return None
