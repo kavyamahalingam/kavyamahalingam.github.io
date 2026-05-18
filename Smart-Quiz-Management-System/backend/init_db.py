@@ -84,12 +84,26 @@ def init_db():
                 user_agent TEXT,
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 session_id VARCHAR(255),
+                is_read BOOLEAN DEFAULT FALSE,
+                category VARCHAR(50) DEFAULT 'General',
                 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
                 INDEX idx_user_timestamp (user_id, timestamp),
                 INDEX idx_action_type (action_type)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
             """)
             print("Activities table checked/created.")
+
+            # Run migration check on user_activities for existing databases
+            cursor.execute("SHOW COLUMNS FROM user_activities LIKE 'is_read'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE user_activities ADD COLUMN is_read BOOLEAN DEFAULT FALSE")
+                print("Migration: Added is_read column to user_activities.")
+
+            cursor.execute("SHOW COLUMNS FROM user_activities LIKE 'category'")
+            if not cursor.fetchone():
+                cursor.execute("ALTER TABLE user_activities ADD COLUMN category VARCHAR(50) DEFAULT 'General'")
+                print("Migration: Added category column to user_activities.")
+
             
             # Create Subjects Table
             cursor.execute("""
