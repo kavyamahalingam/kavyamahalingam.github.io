@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import string
 import io
 import csv
@@ -7,6 +7,7 @@ import logging
 import random
 import os
 from datetime import datetime, timedelta
+import threading
 from flask_mail import Message
 from extensions import bcrypt, jwt, limiter, mail, get_client_ip
 from models import User, Otp, Activity
@@ -23,6 +24,14 @@ auth_bp = Blueprint('auth', __name__)
 def validate_password(password):
     # Minimum 8 characters, at least one letter and one number
     return len(password) >= 8 and any(c.isdigit() for c in password) and any(c.isalpha() for c in password)
+
+def send_async_email(app, msg):
+    with app.app_context():
+        try:
+            mail.send(msg)
+            logger.info("Async email sent successfully")
+        except Exception as e:
+            logger.error(f"Error sending async email: {e}")
 
 @auth_bp.route('/register', methods=['POST'])
 @limiter.limit("5 per minute")
@@ -236,8 +245,8 @@ def send_otp():
                 recipients=[email],
                 body=body
             )
-            mail.send(msg)
-            logger.info(f"OTP sent to {email} for {purpose}")
+            threading.Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()
+            logger.info(f"OTP email queued for {email} for {purpose}")
             return jsonify({"msg": "OTP sent successfully"}), 200
         except Exception as e:
             logger.error(f"Error sending email: {e}")
@@ -270,8 +279,8 @@ def forgot_password():
                 recipients=[email],
                 body=f"Your secure OTP for password reset is: {otp_code}\nIt will expire in 10 minutes."
             )
-            mail.send(msg)
-            logger.info(f"OTP sent to {email}")
+            threading.Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()
+            logger.info(f"OTP email queued for {email}")
             return jsonify({"msg": "If your email is in our system, you will receive an OTP."}), 200
         except Exception as e:
             logger.error(f"Error sending email: {e}")
@@ -317,8 +326,8 @@ def test_email():
             recipients=[email],
             body="If you are reading this, your Flask-Mail configuration is correct!"
         )
-        mail.send(msg)
-        logger.info(f"Test email sent successfully to {email}")
+        threading.Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()
+        logger.info(f"Test email queued successfully to {email}")
         return jsonify({"msg": "Test email sent! Check your inbox (and spam folder)."}), 200
     except Exception as e:
         logger.error(f"Test email failed: {e}")
