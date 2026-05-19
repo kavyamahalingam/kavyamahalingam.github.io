@@ -245,6 +245,10 @@ def send_otp():
                 recipients=[email],
                 body=body
             )
+            if email.endswith('@example.com'):
+                logger.info(f"Skipping email sending for test account {email}")
+                return jsonify({"msg": "OTP generated successfully (email bypassed)"}), 200
+            
             threading.Thread(target=send_async_email, args=(current_app._get_current_object(), msg)).start()
             logger.info(f"OTP email queued for {email} for {purpose}")
             return jsonify({"msg": "OTP sent successfully"}), 200
