@@ -204,7 +204,7 @@ def me():
     return jsonify({"msg": "User not found"}), 404
 
 @auth_bp.route('/send-otp', methods=['POST'])
-@limiter.limit("3 per minute")
+@limiter.limit("10 per minute")
 def send_otp():
     data = request.get_json()
     email = data.get('email')
