@@ -21,6 +21,10 @@ from flask_jwt_extended import (
 logger = logging.getLogger(__name__)
 auth_bp = Blueprint('auth', __name__)
 
+@auth_bp.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({"msg": "pong-v2"}), 200
+
 def validate_password(password):
     # Minimum 8 characters, at least one letter and one number
     return len(password) >= 8 and any(c.isdigit() for c in password) and any(c.isalpha() for c in password)
