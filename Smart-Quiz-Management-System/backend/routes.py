@@ -8,7 +8,7 @@ import random
 import os
 from datetime import datetime, timedelta
 from flask_mail import Message
-from extensions import bcrypt, jwt, limiter, mail
+from extensions import bcrypt, jwt, limiter, mail, get_client_ip
 from models import User, Otp, Activity
 from flask_jwt_extended import (
     create_access_token, create_refresh_token,
@@ -134,7 +134,7 @@ def login():
             user_id=user['id'],
             action_type='login',
             description='User logged in',
-            ip_address=request.remote_addr,
+            ip_address=get_client_ip(),
             user_agent=request.user_agent.string
         )
         
@@ -348,7 +348,7 @@ def log_activity():
         action_type=action_type,
         description=description,
         page_url=page_url,
-        ip_address=request.remote_addr,
+        ip_address=get_client_ip(),
         user_agent=request.user_agent.string,
         category=category
     )
