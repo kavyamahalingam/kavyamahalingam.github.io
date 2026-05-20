@@ -1,135 +1,371 @@
+# Full Portfolio Website Code
+
+Save this as `index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Project Card</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kavya Mahalingam | Portfolio</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        body{
-            background:#0f172a;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-        }
+    body {
+      background: #0f172a;
+      color: white;
+      line-height: 1.6;
+    }
 
-        .project-card{
-            width:350px;
-            background:#1e293b;
-            border-radius:15px;
-            overflow:hidden;
-            box-shadow:0 4px 15px rgba(0,0,0,0.4);
-            transition:0.3s;
-        }
+    header {
+      background: #111827;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .project-card:hover{
-            transform:translateY(-5px);
-        }
+    header h1 {
+      color: #38bdf8;
+    }
 
-        .project-image img{
-            width:100%;
-            height:220px;
-            object-fit:cover;
-        }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-        .project-content{
-            padding:20px;
-        }
+    nav a:hover {
+      color: #38bdf8;
+    }
 
-        .project-content h2{
-            color:white;
-            margin-bottom:10px;
-            font-size:24px;
-        }
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .project-content p{
-            color:#cbd5e1;
-            line-height:1.6;
-            margin-bottom:20px;
-        }
+    .hero h2 {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
 
-        .buttons{
-            display:flex;
-            gap:15px;
-        }
+    .hero span {
+      color: #38bdf8;
+    }
 
-        .btn{
-            flex:1;
-            text-align:center;
-            padding:12px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;
-            transition:0.3s;
-        }
+    .hero p {
+      max-width: 700px;
+      color: #cbd5e1;
+      margin-bottom: 25px;
+    }
 
-        .live-btn{
-            background:#2563eb;
-            color:white;
-        }
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+      margin: 5px;
+    }
 
-        .live-btn:hover{
-            background:#1d4ed8;
-        }
+    .btn:hover {
+      background: #1d4ed8;
+    }
 
-        .github-btn{
-            background:#334155;
-            color:white;
-        }
+    section {
+      padding: 80px 10%;
+    }
 
-        .github-btn:hover{
-            background:#475569;
-        }
-    </style>
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #38bdf8;
+    }
+
+    .about {
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #cbd5e1;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    footer {
+      background: #111827;
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+    }
+
+    @media(max-width:768px) {
+      .hero h2 {
+        font-size: 35px;
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="project-card">
+  <!-- HEADER -->
+  <header>
+    <h1>Kavya</h1>
 
-        <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f" alt="E-Commerce Project">
-        </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <h2>Hello, I'm <span>Kavya Mahalingam</span></h2>
+
+    <p>
+      Full Stack Developer passionate about building modern web applications,
+      smart learning systems, quiz management platforms, and responsive websites.
+    </p>
+
+    <div>
+      <a href="#projects" class="btn">View Projects</a>
+
+      <a href="https://github.com/kavyamahalingam" target="_blank" class="btn">
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+      <p>
+        I am a Full Stack Developer and BSc student interested in developing
+        modern responsive web applications using HTML, CSS, JavaScript,
+        Python, Flask, Django, MySQL, and Java Spring Boot.
+      </p>
+
+      <br>
+
+      <p>
+        I developed projects including Smart Quiz & Assessment Management System,
+        Smart Adaptive Learning Platform, Cloud Kitchen Website, and E-Commerce websites.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills">
+      <div class="skill-card">HTML</div>
+      <div class="skill-card">CSS</div>
+      <div class="skill-card">JavaScript</div>
+      <div class="skill-card">Python</div>
+      <div class="skill-card">Flask</div>
+      <div class="skill-card">Django</div>
+      <div class="skill-card">Java</div>
+      <div class="skill-card">Spring Boot</div>
+      <div class="skill-card">MySQL</div>
+      <div class="skill-card">GitHub</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Quiz Project">
 
         <div class="project-content">
+          <h3>Smart Quiz & Assessment Management System</h3>
 
-            <h2>E-Commerce Website</h2>
+          <p>
+            Full-stack platform for online exams, student assessment,
+            quiz generation, analytics dashboard, and admin management.
+          </p>
 
-            <p>
-                A modern full-stack e-commerce platform with shopping cart,
-                product management, secure login, payment integration,
-                and responsive UI design.
-            </p>
+          <div class="buttons">
+            <a href="https://your-netlify-link.netlify.app" target="_blank" class="btn">
+              Live Demo
+            </a>
 
-            <div class="buttons">
-
-                <!-- LIVE WEBSITE BUTTON -->
-                <a href="https://your-ecommerce-website-link.com"
-                   target="_blank"
-                   class="btn live-btn">
-                    Live Demo
-                </a>
-
-                <!-- GITHUB BUTTON -->
-                <a href="https://github.com/yourusername/yourrepository"
-                   target="_blank"
-                   class="btn github-btn">
-                    GitHub
-                </a>
-
-            </div>
-
+            <a href="https://github.com/yourgithubrepo" target="_blank" class="btn">
+              GitHub
+            </a>
+          </div>
         </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Learning Platform">
+
+        <div class="project-content">
+          <h3>Smart Adaptive Learning Platform</h3>
+
+          <p>
+            AI-based learning platform with diagnostic tests, adaptive lessons,
+            quizzes, certificates, and mentor support.
+          </p>
+
+          <div class="buttons">
+            <a href="https://your-netlify-link.netlify.app" target="_blank" class="btn">
+              Live Demo
+            </a>
+
+            <a href="https://github.com/yourgithubrepo" target="_blank" class="btn">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" alt="E-Commerce">
+
+        <div class="project-content">
+          <h3>E-Commerce Website</h3>
+
+          <p>
+            Modern shopping website with product management, cart,
+            secure login system, and responsive design.
+          </p>
+
+          <div class="buttons">
+            <a href="https://your-netlify-link.netlify.app" target="_blank" class="btn">
+              Live Demo
+            </a>
+
+            <a href="https://github.com/yourgithubrepo" target="_blank" class="btn">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
 
     </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="about">
+      <p>Email: yourmail@gmail.com</p>
+      <br>
+      <p>GitHub: github.com/kavyamahalingam</p>
+      <br>
+      <p>LinkedIn: linkedin.com/in/yourprofile</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Kavya Mahalingam | Portfolio Website</p>
+  </footer>
 
 </body>
 </html>
+```
+
+Replace:
+
+* `your-netlify-link.netlify.app` → your real live URL
+* `yourgithubrepo` → your real GitHub repository
+* `yourmail@gmail.com` → your email
+* `linkedin.com/in/yourprofile` → your Li
