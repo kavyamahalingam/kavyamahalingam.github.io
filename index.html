@@ -1,607 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Project Card</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
-<title>Kavya M | Full Stack Developer</title>
+        body{
+            background:#0f172a;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        .project-card{
+            width:350px;
+            background:#1e293b;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 4px 15px rgba(0,0,0,0.4);
+            transition:0.3s;
+        }
 
-<style>
+        .project-card:hover{
+            transform:translateY(-5px);
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        .project-image img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
 
-html{
-    scroll-behavior:smooth;
-}
+        .project-content{
+            padding:20px;
+        }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#0f172a;
-    color:#e2e8f0;
-}
+        .project-content h2{
+            color:white;
+            margin-bottom:10px;
+            font-size:24px;
+        }
 
-/* NAVBAR */
+        .project-content p{
+            color:#cbd5e1;
+            line-height:1.6;
+            margin-bottom:20px;
+        }
 
-nav{
-    width:100%;
-    padding:20px 10%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:fixed;
-    top:0;
-    background:rgba(15,23,42,0.95);
-    backdrop-filter:blur(10px);
-    z-index:1000;
-}
+        .buttons{
+            display:flex;
+            gap:15px;
+        }
 
-.logo{
-    font-size:30px;
-    font-weight:700;
-    color:#38bdf8;
-}
+        .btn{
+            flex:1;
+            text-align:center;
+            padding:12px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+            transition:0.3s;
+        }
 
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
+        .live-btn{
+            background:#2563eb;
+            color:white;
+        }
 
-nav ul li a{
-    text-decoration:none;
-    color:#e2e8f0;
-    transition:0.3s;
-    font-size:15px;
-}
+        .live-btn:hover{
+            background:#1d4ed8;
+        }
 
-nav ul li a:hover{
-    color:#38bdf8;
-}
+        .github-btn{
+            background:#334155;
+            color:white;
+        }
 
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 10%;
-    gap:50px;
-}
-
-.hero-text{
-    flex:1;
-}
-
-.hero-text h1{
-    font-size:65px;
-    margin-bottom:20px;
-    line-height:1.1;
-}
-
-.hero-text h1 span{
-    color:#38bdf8;
-}
-
-.hero-text h3{
-    font-size:24px;
-    color:#94a3b8;
-    margin-bottom:20px;
-}
-
-.hero-text p{
-    font-size:17px;
-    color:#cbd5e1;
-    line-height:1.8;
-    margin-bottom:35px;
-}
-
-.buttons{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:14px 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
-}
-
-.primary{
-    background:#38bdf8;
-    color:#0f172a;
-}
-
-.primary:hover{
-    background:#0ea5e9;
-}
-
-.secondary{
-    border:2px solid #38bdf8;
-    color:#38bdf8;
-}
-
-.secondary:hover{
-    background:#38bdf8;
-    color:#0f172a;
-}
-
-/* PROFILE */
-
-.hero-image{
-    flex:1;
-    display:flex;
-    justify-content:center;
-}
-
-.circle{
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#38bdf8,#2563eb);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:100px;
-    font-weight:700;
-    color:white;
-    box-shadow:0 0 40px rgba(56,189,248,0.4);
-}
-
-/* SECTIONS */
-
-section{
-    padding:100px 10%;
-}
-
-.section-title{
-    font-size:42px;
-    text-align:center;
-    color:#38bdf8;
-    margin-bottom:50px;
-}
-
-/* GRID */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
-}
-
-/* CARD */
-
-.card{
-    background:#1e293b;
-    padding:30px;
-    border-radius:18px;
-    transition:0.4s;
-    border:1px solid transparent;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border-color:#38bdf8;
-    box-shadow:0 10px 30px rgba(56,189,248,0.15);
-}
-
-.card h3{
-    color:white;
-    margin-bottom:15px;
-}
-
-.card p{
-    color:#cbd5e1;
-    line-height:1.8;
-}
-
-.card ul{
-    padding-left:20px;
-}
-
-.card li{
-    margin-bottom:10px;
-}
-
-/* SKILLS */
-
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
-}
-
-.skill{
-    background:#1e293b;
-    padding:14px 24px;
-    border-radius:40px;
-    border:1px solid #334155;
-    transition:0.3s;
-}
-
-.skill:hover{
-    background:#38bdf8;
-    color:#0f172a;
-    transform:scale(1.05);
-}
-
-/* CONTACT */
-
-.contact{
-    text-align:center;
-}
-
-.contact p{
-    color:#cbd5e1;
-    margin-bottom:15px;
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:30px;
-    border-top:1px solid #1e293b;
-    color:#94a3b8;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.hero{
-    flex-direction:column;
-    text-align:center;
-    padding-top:120px;
-}
-
-.hero-text h1{
-    font-size:45px;
-}
-
-.circle{
-    width:250px;
-    height:250px;
-    font-size:70px;
-}
-
-nav{
-    flex-direction:column;
-    gap:15px;
-}
-
-nav ul{
-    gap:15px;
-}
-
-.buttons{
-    justify-content:center;
-}
-
-}
-
-</style>
-
+        .github-btn:hover{
+            background:#475569;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+    <div class="project-card">
 
-<nav>
+        <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f" alt="E-Commerce Project">
+        </div>
 
-<div class="logo">KAVYA</div>
+        <div class="project-content">
 
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+            <h2>E-Commerce Website</h2>
 
-</nav>
+            <p>
+                A modern full-stack e-commerce platform with shopping cart,
+                product management, secure login, payment integration,
+                and responsive UI design.
+            </p>
 
-<!-- HERO -->
+            <div class="buttons">
 
-<div class="hero">
+                <!-- LIVE WEBSITE BUTTON -->
+                <a href="https://your-ecommerce-website-link.com"
+                   target="_blank"
+                   class="btn live-btn">
+                    Live Demo
+                </a>
 
-<div class="hero-text">
+                <!-- GITHUB BUTTON -->
+                <a href="https://github.com/yourusername/yourrepository"
+                   target="_blank"
+                   class="btn github-btn">
+                    GitHub
+                </a>
 
-<h1>Hi, I'm <span>Kavya M</span></h1>
+            </div>
 
-<h3>Full Stack Developer</h3>
+        </div>
 
-<p>
-Aspiring Full Stack Developer with internship experience in building scalable and responsive web applications using React.js, Python, Flask, Django, FastAPI, and MySQL.
-</p>
-
-<div class="buttons">
-
-<a href="#projects" class="btn primary">View Projects</a>
-
-<a href="#contact" class="btn secondary">Contact Me</a>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-
-<div class="circle">
-KM
-</div>
-
-</div>
-
-</div>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<h2 class="section-title">About Me</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Professional Summary</h3>
-
-<p>
-Aspiring Full Stack Developer with hands-on internship experience in frontend and backend development, REST API integration, database management, and scalable application development using modern technologies.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Education</h3>
-
-<p>
-<strong>Bachelor of Computer Science With Data Analytics</strong><br><br>
-
-Shri Nehru Maha Vidhyalaya College Of Arts And Science<br>
-Coimbatore, Tamil Nadu<br>
-Jul 2023 – Present<br><br>
-
-GPA : 8.0/10
-</p>
-
-<br>
-
-<p>
-<strong>Higher Secondary Education</strong><br><br>
-
-Government Higher Secondary School<br>
-Kinathukadavu, Coimbatore<br>
-Jun 2022 – Apr 2023<br><br>
-
-GPA : 7.07/10
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- EXPERIENCE -->
-
-<section id="experience">
-
-<h2 class="section-title">Experience</h2>
-
-<div class="card">
-
-<h3>Full Stack Developer Intern — CodeSence Soft Solutions Pvt Ltd</h3>
-
-<p>
-<strong>Duration:</strong> Nov 2025 – Present
-</p>
-
-<br>
-
-<p>
-Worked as a Full Stack Developer Intern focusing on designing, developing, and maintaining responsive web applications using modern frontend and backend technologies.
-</p>
-
-<br>
-
-<p>
-Developed interactive and user-friendly frontend interfaces using HTML5, CSS3, JavaScript, and React.js to improve user experience across desktop and mobile platforms.
-</p>
-
-<br>
-
-<p>
-Built scalable backend systems and REST APIs using Python, Flask, Django, and FastAPI for handling authentication, database operations, and application logic efficiently.
-</p>
-
-<br>
-
-<p>
-Integrated MySQL databases for storing and managing application data securely while implementing CRUD operations and optimized database queries.
-</p>
-
-<br>
-
-<p>
-Worked on real-time project modules including login systems, OTP verification, quiz management, student portals, admin dashboards, and API integrations.
-</p>
-
-<br>
-
-<p>
-Implemented secure authentication mechanisms using JWT tokens and followed secure coding practices to protect applications from SQL Injection, XSS, and CSRF vulnerabilities.
-</p>
-
-<br>
-
-<p>
-Collaborated with development teams to analyze requirements, debug application issues, perform testing, and deliver scalable solutions following Software Development Life Cycle (SDLC) practices.
-</p>
-
-<br>
-
-<p>
-Gained hands-on experience with Git, GitHub, Postman, deployment workflows, and responsive web design while maintaining clean and reusable code architecture.
-</p>
-
-</div>
-
-</section>
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-<h2 class="section-title">Projects</h2>
-
-<div class="grid">
-
-<!-- SMART QUIZ -->
-
-<div class="card">
-
-<h3>Smart Quiz & Assessment Management System</h3>
-
-<p>
-<strong>Overview:</strong>
-A production-ready full-stack platform designed for educational institutions to manage online examinations securely.
-</p>
-
-<p>
-<strong>How it works:</strong>
-Admin manages exams, Staff uploads questions, and Students attend secure online tests with automated evaluation.
-</p>
-
-<ul style="margin-top:10px; color:#cbd5e1; list-style-type:disc; padding-left:20px;">
-<li>React.js, Flask, FastAPI, MySQL</li>
-<li>JWT Authentication</li>
-<li>OTP Verification</li>
-<li>Real-time Notifications</li>
-</ul>
-
-<div class="buttons" style="margin-top:20px;">
-
-<a href="smart-quiz-details.html"
-class="btn secondary">
-Details
-</a>
-
-<a href="./Smart-Quiz-Management-System/"
-class="btn secondary">
-Code
-</a>
-
-</div>
-
-</div>
-
-<!-- ORGANIC STORE -->
-
-<div class="card">
-
-<h3>Organic Store E-Commerce</h3>
-
-<p>
-<strong>Overview:</strong>
-Responsive e-commerce website for organic shopping experience.
-</p>
-
-<p>
-<strong>How it works:</strong>
-Users can browse healthy organic products, add items to cart, and experience responsive shopping UI.
-</p>
-
-<ul style="margin-top:10px; color:#cbd5e1; list-style-type:disc; padding-left:20px;">
-<li>HTML5, CSS3, JavaScript</li>
-<li>Responsive UI</li>
-<li>Dynamic Shopping Cart</li>
-<li>Mobile Friendly Design</li>
-</ul>
-
-<div class="buttons" style="margin-top:20px;">
-
-<a href="https://your-organic-store.netlify.app"
-target="_blank"
-class="btn primary">
-Live Demo
-</a>
-
-<a href="./Organic-Store-Ecommerce/README.md"
-class="btn secondary">
-Details
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SKILLS -->
-
-<section id="skills">
-
-<h2 class="section-title">Technologies & Tools</h2>
-
-<div class="skills">
-
-<div class="skill">HTML5</div>
-<div class="skill">CSS3</div>
-<div class="skill">JavaScript</div>
-<div class="skill">React.js</div>
-<div class="skill">Python</div>
-<div class="skill">Flask</div>
-<div class="skill">Django</div>
-<div class="skill">FastAPI</div>
-<div class="skill">MySQL</div>
-<div class="skill">Git</div>
-<div class="skill">GitHub</div>
-<div class="skill">VS Code</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-<h2 class="section-title">Contact</h2>
-
-<div class="contact">
-
-<p>📍 Coimbatore, Tamil Nadu</p>
-<p>📞 +91 8438456440</p>
-<p>📧 kavyamahalaxmi2006@gmail.com</p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-© 2026 Kavya M | Full Stack Developer Portfolio
-</footer>
+    </div>
 
 </body>
-
 </html>
