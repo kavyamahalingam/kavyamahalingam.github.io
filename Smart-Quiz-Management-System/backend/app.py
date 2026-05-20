@@ -72,7 +72,7 @@ def create_app():
     cors.init_app(app, supports_credentials=True, origins=allowed_origins)
 
     limiter.init_app(app)
-    socketio.init_app(app, cors_allowed_origins="*")
+    socketio.init_app(app, cors_allowed_origins=[origin.pattern for origin in allowed_origins])
 
     # Import socket events after socketio is initialized
     import socket_events
